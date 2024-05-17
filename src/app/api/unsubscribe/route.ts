@@ -23,9 +23,9 @@ export async function POST(request: NextRequest) {
 
     try {
       await resend.emails.send({
-        from: "unsubscribe@codewithguillaume.com",
+        from: "info@mediaeffect.gr",
         to: email,
-        reply_to: "contact@codewithguillaume.com",
+        reply_to: "info@mediaeffect.gr",
         subject: "Confirm your unsubscription",
         react: UnsubscribeTemplate({ code: id })
       })

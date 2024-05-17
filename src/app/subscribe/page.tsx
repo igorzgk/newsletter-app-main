@@ -48,7 +48,7 @@ export default function Subscribe() {
       />
       <div className="grid gap-4 px-8 pb-6 text-center">
         {!success && <>
-          <p>Top 5 links of the week about coding.</p>
+          <p>Subscribe - Disseration Project</p>
           <div className='grid'>
             <input
               type='email'

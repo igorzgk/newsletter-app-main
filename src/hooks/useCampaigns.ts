@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const MODEL = {
   name: "A new campaign",
-  from: "newsletter@codewithguillaume.com",
+  from: "info@mediaeffect.gr",
   subject: undefined,
   list_id: undefined,
   status: 'Draft',

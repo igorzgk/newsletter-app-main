@@ -11,8 +11,8 @@ export default function Login() {
   const { router } = useNavigation()
   const { setUser } = useAppContext()
   const [data, setData] = useState<{ email: string, password: string }>({
-    email: 'codewithguillaume@gmail.com',
-    password: '86327417Gdu!'
+    email: 'test@mail.com',
+    password: 'password1234!'
   })
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | undefined>(undefined)

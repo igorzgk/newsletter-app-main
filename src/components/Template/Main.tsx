@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Editor } from "novel";
-import NL from '../../../public/banner.png';
+import NL from '../../../public/Untitled.png';
 
 interface MainTemplateProps {
   onContent: (content: string) => void;
@@ -14,7 +14,7 @@ export default function MainTemplate({ onContent }: MainTemplateProps) {
       <div className="w-full h-auto">
         <Image
           src={NL}
-          alt="Codewithguillaume's newsletter"
+          alt="ST20191530 newsletter"
         />
       </div>
       <div className="mx-6 py-7">
@@ -27,9 +27,8 @@ export default function MainTemplate({ onContent }: MainTemplateProps) {
         <hr />
         <footer>
           <p className="py-4">
-            Thanks for following this NL,<br />👋 See you next Sunday!<br />— Guillaume (@blackevilgoblin)
+            Thanks for following<br />👋 See you next time!<br />— ST20191530
           </p>
-          <a href="https://www.youtube.com/@codewithguillaume">👉 Subscribe to my Youtube Channel</a>
         </footer>
       </div>
     </div>
