@@ -3,6 +3,21 @@ import { resend } from "@/lib/resend";
 import { supabaseAdmin } from "@/lib/supabase";
 import { NextRequest, NextResponse } from "next/server";
 
+export async function DELETE(request: NextRequest) {
+  const { id } = await request.json();
+
+  if (!id) return NextResponse.json({ error: 'Missing campaign ID' });
+
+  const { data, error } = await supabaseAdmin
+    .from('campaigns')
+    .delete()
+    .eq('id', id);
+
+  if (error) return NextResponse.json({ error: error.message });
+
+  return NextResponse.json({ data });
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
 

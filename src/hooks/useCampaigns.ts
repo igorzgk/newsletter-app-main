@@ -17,6 +17,30 @@ export const useCampaigns = () => {
   const [newCampaign, setNewCampaign] = useState<Campaign>(MODEL);
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
+  const deleteCampaign = async (id: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/campaigns/send', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        return data;
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (error: any) {
+      throw new Error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const startNewCampaign = () => setNewCampaign(MODEL);
 
   const saveEmail = async (email: Email) => {
@@ -144,6 +168,7 @@ export const useCampaigns = () => {
     saveCampaign,
     getCampaigns,
     startNewCampaign,
-    sendCampaign
+    sendCampaign,
+    deleteCampaign
   }
 }
