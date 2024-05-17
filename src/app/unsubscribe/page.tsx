@@ -32,7 +32,7 @@ export default function Unsubscribe() {
             <div className="notification error">Sorry your unsubscription has failed.</div>
           </>}
           <div>
-            <Button label={'Unsubscribe 👉'} loading={loading} color="primary" onClick={() => unsubscribeToNewsletter(email)} />
+            <Button label={'Unsubscribe 👉'} color="primary" onClick={() => unsubscribeToNewsletter(email)} />
           </div>
         </>}
         {success && <>
