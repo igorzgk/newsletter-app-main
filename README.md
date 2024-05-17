@@ -1,0 +1,1 @@
+!['Full stack Web App with Next.js 14 Supabase & Resend'](https://repository-images.githubusercontent.com/718188932/758bcd70-8cd5-4df1-92f4-69308f64e767)
