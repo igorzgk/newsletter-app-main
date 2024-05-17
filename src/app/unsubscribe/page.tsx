@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import { useSubscribers } from "@/hooks/useSubscribers";
 import Image from "next/image";
 import { useState } from "react";
-import banner from '../../../public/banner.png';
+import banner from '../../../public/Untitled.png';
 
 export default function Unsubscribe() {
   const [email, setEmail] = useState<string>('')

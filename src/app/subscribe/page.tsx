@@ -5,7 +5,7 @@ import { useAppContext } from "@/context";
 import { isValidEmail } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import banner from '../../../public/banner.png';
+import banner from '../../../public/Untitled.png';
 
 export default function Subscribe() {
   const { supabase } = useAppContext();
