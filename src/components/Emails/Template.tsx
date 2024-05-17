@@ -18,8 +18,8 @@ export default function Template({ content = 'Hello world' }: Props) {
       <Tailwind>
         <Body className="font-sans text-gray-400 bg-gray-100 py-6">
           <Container className="my-6 bg-white shadow-sm">
-            <Img
-              src="@/public/Untitled.png"
+          <Img
+              src={`${baseUrl}/Untitled.png`}
               width="100%"
               height="auto"
             />
