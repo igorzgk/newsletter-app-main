@@ -9,13 +9,30 @@ export async function POST(request: NextRequest) {
   const { campaign, email: emailData } = body;
 
   try {
-    if (!campaign || !emailData) return NextResponse.json({ error: 'Missing campaign or email' })
+    if (!campaign || !emailData) return NextResponse.json({ error: 'Missing campaign or email' });
 
-    const { data: subscribers, error } = await supabaseAdmin
-      .from('subscribers')
-      .select('*')
-    
-    let subscribersMapped = subscribers?.map(({ email }) => email) || [];
+    let subscribersMapped: string[] = [];
+
+    if (campaign.list_id) {
+      // Fetch the specific list of subscribers
+      const { data: subscribers, error } = await supabaseAdmin
+        .from('subscribers')
+        .select('*')
+        .eq('id', campaign.list_id);
+
+      if (error) throw error;
+
+      subscribersMapped = subscribers?.map(({ email }) => email) || [];
+    } else {
+      // Fetch all subscribers
+      const { data: subscribers, error } = await supabaseAdmin
+        .from('subscribers')
+        .select('*');
+
+      if (error) throw error;
+
+      subscribersMapped = subscribers?.map(({ email }) => email) || [];
+    }
 
     const promises = subscribersMapped
       .map((to: string) => {
@@ -24,22 +41,22 @@ export async function POST(request: NextRequest) {
           to,
           subject: campaign.subject,
           react: Template({ content: emailData.content })
-        })
-      })
-    
+        });
+      });
+
     const { data: campaignSaved } = await supabaseAdmin
       .from("campaigns")
       .upsert({ id: campaign.id, status: 'Sent' })
-      .select()
-    
-    if (campaignSaved) console.log(campaignSaved)
-    
+      .select();
+
+    if (campaignSaved) console.log(campaignSaved);
+
     const responses = await Promise.all(promises);
 
     return NextResponse.json({
       status: 200,
       responses
-    })
+    });
   } catch (error) {
     return NextResponse.json({ error: error, status: 400 });
   }
