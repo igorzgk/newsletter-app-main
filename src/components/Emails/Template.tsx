@@ -3,6 +3,7 @@ import { Img } from '@react-email/img';
 import { Link } from '@react-email/link';
 import { Text } from '@react-email/text';
 
+
 interface Props {
   content: string;
 }
@@ -19,7 +20,7 @@ export default function Template({ content = 'Hello world' }: Props) {
         <Body className="font-sans text-gray-400 bg-gray-100 py-6">
           <Container className="my-6 bg-white shadow-sm">
           <Img
-              src={`${baseUrl}/Untitled.png`}
+              src="../../../public/Untitled.png"
               width="100%"
               height="auto"
             />
